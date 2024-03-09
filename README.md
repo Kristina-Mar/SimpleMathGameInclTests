@@ -1,1 +1,1 @@
-# SimpleMathGameInclTests
+# SimpleMathGameInclTests C# WinForms game with 4 math problems to be solved within a time limit.
