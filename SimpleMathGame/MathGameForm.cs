@@ -5,10 +5,10 @@ namespace SimpleMathGame
         GenerateNumbers generateNumbers = new GenerateNumbers();
         // The constructor also accepts parameters - highest number/range of the math problems and a time limit in seconds.
         // GenerateNumbers generateNumbers = new GenerateNumbers(10000, 60);
-        SetNumbersAndResult setAddition = new SetNumbersAndResult();
-        SetNumbersAndResult setSubtraction = new SetNumbersAndResult();
-        SetNumbersAndResult setMultiplication = new SetNumbersAndResult();
-        SetNumbersAndResult setDivision = new SetNumbersAndResult();
+        AssignNumbersAndResult additionProblem = new AssignNumbersAndResult();
+        AssignNumbersAndResult subtractionProblem = new AssignNumbersAndResult();
+        AssignNumbersAndResult multiplicationProblem = new AssignNumbersAndResult();
+        AssignNumbersAndResult divisionProblem = new AssignNumbersAndResult();
         int remainingTime = 0;
         int correctAnswers = 0;
         public MathGameForm()
@@ -28,18 +28,18 @@ namespace SimpleMathGame
         {
             correctAnswers = 0;
             remainingTime = generateNumbers.TimeLimit;
-            setAddition = generateNumbers.Additon();
-            labelAddNo1.Text = setAddition.Number1.ToString();
-            labelAddNo2.Text = setAddition.Number2.ToString();
-            setSubtraction = generateNumbers.Subtraction();
-            labelSubtNo1.Text = setSubtraction.Number1.ToString();
-            labelSubtNo2.Text = setSubtraction.Number2.ToString();
-            setMultiplication = generateNumbers.Multiplication();
-            labelMultNo1.Text = setMultiplication.Number1.ToString();
-            labelMultNo2.Text = setMultiplication.Number2.ToString();
-            setDivision = generateNumbers.Division();
-            labelDivNo1.Text = setDivision.Number1.ToString();
-            labelDivNo2.Text = setDivision.Number2.ToString();
+            additionProblem = generateNumbers.GenerateAdditionProblem();
+            labelAddNo1.Text = additionProblem.Number1.ToString();
+            labelAddNo2.Text = additionProblem.Number2.ToString();
+            subtractionProblem = generateNumbers.GenerateSubtractionProblem();
+            labelSubtNo1.Text = subtractionProblem.Number1.ToString();
+            labelSubtNo2.Text = subtractionProblem.Number2.ToString();
+            multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
+            labelMultNo1.Text = multiplicationProblem.Number1.ToString();
+            labelMultNo2.Text = multiplicationProblem.Number2.ToString();
+            divisionProblem = generateNumbers.GenerateDivisionProblem();
+            labelDivNo1.Text = divisionProblem.Number1.ToString();
+            labelDivNo2.Text = divisionProblem.Number2.ToString();
             foreach (TextBox textBox in panelAnswers.Controls) // All user answers are deleted.
             {
                 textBox.ReadOnly = false;
@@ -66,10 +66,10 @@ namespace SimpleMathGame
                 textBoxResultSubtract.ReadOnly = true;
                 textBoxResultMultiply.ReadOnly = true;
                 textBoxResultDivide.ReadOnly = true;
-                checkResults(textBoxResultAdd, setAddition.Result);
-                checkResults(textBoxResultSubtract, setSubtraction.Result);
-                checkResults(textBoxResultMultiply, setMultiplication.Result);
-                checkResults(textBoxResultDivide, setDivision.Result);
+                checkResults(textBoxResultAdd, additionProblem.Result);
+                checkResults(textBoxResultSubtract, subtractionProblem.Result);
+                checkResults(textBoxResultMultiply, multiplicationProblem.Result);
+                checkResults(textBoxResultDivide, divisionProblem.Result);
                 showResults();
             }
         }
