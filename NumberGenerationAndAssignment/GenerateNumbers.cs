@@ -8,12 +8,12 @@ namespace NumberGenerationAndAssignment
 {
     public class GenerateNumbers
     {
-        private int numberLimit; // Defines the range of the math problems.
+        public int NumberLimit; // Defines the range of the math problems.
         public int TimeLimit; // Sets the time limit in seconds.
         Random randomNumberGenerator = new Random();
         public GenerateNumbers(int numberLimit, int timeLimit)
         {
-            this.numberLimit = numberLimit;
+            NumberLimit = numberLimit;
             TimeLimit = timeLimit;
         }
         public GenerateNumbers() : this(100, 15)
@@ -23,7 +23,7 @@ namespace NumberGenerationAndAssignment
         public AssignNumbersAndResult GenerateAdditionProblem()
         {
             int number1Min = 1; // The minimum is included in the random number generator range.
-            int number1Max = numberLimit; // The maximum is not included in the random number generator range. Also sets the maximum result (100).
+            int number1Max = NumberLimit; // The maximum is not included in the random number generator range. Also sets the maximum result (100).
             int number2Min = 1;
             int number1 = randomNumberGenerator.Next(number1Min, number1Max);
             int number2 = randomNumberGenerator.Next(number2Min, number1Max - number1 + 1);
@@ -34,7 +34,7 @@ namespace NumberGenerationAndAssignment
         public AssignNumbersAndResult GenerateSubtractionProblem()
         {
             int number1Min = 2; // The game doesn't allow negative numbers as results.
-            int number1Max = numberLimit;
+            int number1Max = NumberLimit;
             int number2Min = 1;
             int number1 = randomNumberGenerator.Next(number1Min, number1Max);
             int number2 = randomNumberGenerator.Next(number2Min, number1); // The second number has to be lower than the first.
@@ -45,11 +45,11 @@ namespace NumberGenerationAndAssignment
         public AssignNumbersAndResult GenerateMultiplicationProblem()
         {
             int number1Min = 2; // Multiplication by 1 is too easy.
-            int number1Max = (numberLimit / 2) + 1;
+            int number1Max = (NumberLimit / 2) + 1;
             // The deafult game only goes up to 100, so the maximum number for multiplication is 50, ie. range up to 51 (not included).
             int number2Min = 2;
             int number1 = randomNumberGenerator.Next(number1Min, number1Max);
-            int number2Max = numberLimit / number1; // This way, the result will be lower or equal to the highest possible number.
+            int number2Max = NumberLimit / number1; // This way, the result will be lower or equal to the highest possible number.
             int number2 = randomNumberGenerator.Next(number2Min, number2Max + 1);
             int result = number1 * number2;
             AssignNumbersAndResult setNumbersAndResult = new AssignNumbersAndResult(number1, number2, result);
@@ -58,10 +58,10 @@ namespace NumberGenerationAndAssignment
         public AssignNumbersAndResult GenerateDivisionProblem()
         {
             int number1Min = 2; // Division by 1 is too easy.
-            int number1Max = (numberLimit / 2) + 1; // The deafult game only goes up to 100, so the maximum number for multiplication is 50, ie. range up to 51 (not included).
+            int number1Max = (NumberLimit / 2) + 1; // The deafult game only goes up to 100, so the maximum number for multiplication is 50, ie. range up to 51 (not included).
             int number2Min = 2;
             int number1 = randomNumberGenerator.Next(number1Min, number1Max);
-            int number2Max = numberLimit / number1; // This way, the result will be lower or equal to 100.
+            int number2Max = NumberLimit / number1; // This way, the result will be lower or equal to 100.
             int number2 = randomNumberGenerator.Next(number2Min, number2Max + 1);
             int result = number1 * number2;
             AssignNumbersAndResult setNumbersAndResult = new AssignNumbersAndResult();
