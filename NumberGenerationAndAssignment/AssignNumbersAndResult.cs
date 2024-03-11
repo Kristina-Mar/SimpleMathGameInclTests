@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleMathGame
+﻿namespace NumberGenerationAndAssignment
 {
-    internal class AssignNumbersAndResult
+    public class AssignNumbersAndResult
     {
         public int Number1 = 0;
         public int Number2 = 0;
@@ -19,7 +13,7 @@ namespace SimpleMathGame
         }
         public AssignNumbersAndResult()
         {
-                
+
         }
     }
 }

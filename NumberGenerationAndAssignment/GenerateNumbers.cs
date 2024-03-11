@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleMathGame
+namespace NumberGenerationAndAssignment
 {
-    internal class GenerateNumbers
+    public class GenerateNumbers
     {
         private int numberLimit; // Defines the range of the math problems.
         public int TimeLimit; // Sets the time limit in seconds.
@@ -19,7 +18,7 @@ namespace SimpleMathGame
         }
         public GenerateNumbers() : this(100, 15)
         {
-                // Deafult game goes up to 100 and has a time limit of 15 seconds.
+            // Deafult game goes up to 100 and has a time limit of 15 seconds.
         }
         public AssignNumbersAndResult GenerateAdditionProblem()
         {

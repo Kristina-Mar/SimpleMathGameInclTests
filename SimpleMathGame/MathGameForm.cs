@@ -1,3 +1,4 @@
+using NumberGenerationAndAssignment;
 namespace SimpleMathGame
 {
     public partial class MathGameForm : Form
