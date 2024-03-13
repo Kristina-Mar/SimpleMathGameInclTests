@@ -4,14 +4,14 @@ namespace SimpleMathGame.Tests
     public class UnitTests
     {
         [Theory]
-        [InlineData(10, 5)]
-        [InlineData(100, 5)]
-        [InlineData(333, 5)]
-        [InlineData(1000, 5)]
-        public void TestAddition(int numberLimit, int timeLimit)
+        [InlineData(10)]
+        [InlineData(100)]
+        [InlineData(333)]
+        [InlineData(1000)]
+        public void TestAddition(int numberLimit)
         {
-            // Checks that the result isn't higher than the number limit (mximum range of the math problems).
-            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
+            // Checks that the result isn't higher than the number limit (maximum range of the math problems).
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit);
             for (int i = 0; i < 100; i++)
             {
                 AssignedNumbersAndResult additionProblem = generateNumbers.GenerateAdditionProblem();
@@ -20,14 +20,14 @@ namespace SimpleMathGame.Tests
             }
         }
         [Theory]
-        [InlineData(10, 5)]
-        [InlineData(100, 5)]
-        [InlineData(333, 5)]
-        [InlineData(1000, 5)]
-        public void TestSubtraction(int numberLimit, int timeLimit)
+        [InlineData(10)]
+        [InlineData(100)]
+        [InlineData(333)]
+        [InlineData(1000)]
+        public void TestSubtraction(int numberLimit)
         {
             // Checks that the result isn't negative.
-            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit);
             for (int i = 0; i < 100; i++)
             {
                 AssignedNumbersAndResult subtractionProblem = generateNumbers.GenerateSubtractionProblem();
@@ -36,14 +36,14 @@ namespace SimpleMathGame.Tests
             }
         }
         [Theory]
-        [InlineData(10, 5)]
-        [InlineData(100, 5)]
-        [InlineData(333, 5)]
-        [InlineData(1000, 5)]
-        public void TestMultiplication(int numberLimit, int timeLimit)
+        [InlineData(10)]
+        [InlineData(100)]
+        [InlineData(333)]
+        [InlineData(1000)]
+        public void TestMultiplication(int numberLimit)
         {
             // Checks that the result isn't higher than the number limit (mximum range of the math problems).
-            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit);
             for (int i = 0; i < 100; i++)
             {
                 AssignedNumbersAndResult multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
@@ -52,14 +52,14 @@ namespace SimpleMathGame.Tests
             }
         }
         [Theory]
-        [InlineData(10, 5)]
-        [InlineData(100, 5)]
-        [InlineData(333, 5)]
-        [InlineData(1000, 5)]
-        public void TestDivision(int numberLimit, int timeLimit)
+        [InlineData(10)]
+        [InlineData(100)]
+        [InlineData(333)]
+        [InlineData(1000)]
+        public void TestDivision(int numberLimit)
         {
             // Checks that the result is an integer and that the dividend is divisible by the divisor.
-            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit);
             for (int i = 0; i < 100; i++)
             {
                 AssignedNumbersAndResult divisionProblem = generateNumbers.GenerateDivisionProblem();

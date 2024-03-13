@@ -9,16 +9,14 @@ namespace NumberGenerationAndAssignment
     public class NumbersGenerator
     {
         public int NumberLimit; // Defines the range of the math problems.
-        public int TimeLimit; // Sets the time limit in seconds.
         Random randomNumberGenerator = new Random();
-        public NumbersGenerator(int numberLimit, int timeLimit)
+        public NumbersGenerator(int numberLimit)
         {
             NumberLimit = numberLimit;
-            TimeLimit = timeLimit;
         }
-        public NumbersGenerator() : this(100, 15)
+        public NumbersGenerator() : this(100)
         {
-            // Deafult game goes up to 100 and has a time limit of 15 seconds.
+            // Deafult game goes up to 100.
         }
         public AssignedNumbersAndResult GenerateAdditionProblem()
         {

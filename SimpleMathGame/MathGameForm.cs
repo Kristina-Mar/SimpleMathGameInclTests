@@ -4,12 +4,13 @@ namespace SimpleMathGame
     public partial class MathGameForm : Form
     {
         NumbersGenerator generateNumbers = new NumbersGenerator();
-        // The constructor also accepts parameters - highest number/range of the math problems and a time limit in seconds.
-        // GenerateNumbers generateNumbers = new GenerateNumbers(10000, 60);
+        // The constructor also accepts parameters - highest number/range of the math problems.
+        // GenerateNumbers generateNumbers = new GenerateNumbers(10000);
         AssignedNumbersAndResult additionProblem = new AssignedNumbersAndResult();
         AssignedNumbersAndResult subtractionProblem = new AssignedNumbersAndResult();
         AssignedNumbersAndResult multiplicationProblem = new AssignedNumbersAndResult();
         AssignedNumbersAndResult divisionProblem = new AssignedNumbersAndResult();
+        int timeLimit = 15; //Default time limit is 15 seconds.
         int remainingTime = 0;
         int correctAnswers = 0;
         public MathGameForm()
@@ -28,7 +29,7 @@ namespace SimpleMathGame
         private void buttonStart_Click(object sender, EventArgs e)
         {
             correctAnswers = 0;
-            remainingTime = generateNumbers.TimeLimit;
+            remainingTime = timeLimit;
             additionProblem = generateNumbers.GenerateAdditionProblem();
             labelAddNo1.Text = additionProblem.Number1.ToString();
             labelAddNo2.Text = additionProblem.Number2.ToString();
