@@ -11,10 +11,10 @@ namespace SimpleMathGame.Tests
         public void TestAddition(int numberLimit, int timeLimit)
         {
             // Checks that the result isn't higher than the number limit (mximum range of the math problems).
-            GenerateNumbers generateNumbers = new GenerateNumbers(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
             for (int i = 0; i < 100; i++)
             {
-                AssignNumbersAndResult additionProblem = generateNumbers.GenerateAdditionProblem();
+                AssignedNumbersAndResult additionProblem = generateNumbers.GenerateAdditionProblem();
                 Assert.True(additionProblem.Number1 + additionProblem.Number2 == additionProblem.Result);
                 Assert.True(additionProblem.Result <= generateNumbers.NumberLimit);
             }
@@ -27,10 +27,10 @@ namespace SimpleMathGame.Tests
         public void TestSubtraction(int numberLimit, int timeLimit)
         {
             // Checks that the result isn't negative.
-            GenerateNumbers generateNumbers = new GenerateNumbers(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
             for (int i = 0; i < 100; i++)
             {
-                AssignNumbersAndResult subtractionProblem = generateNumbers.GenerateSubtractionProblem();
+                AssignedNumbersAndResult subtractionProblem = generateNumbers.GenerateSubtractionProblem();
                 Assert.True(subtractionProblem.Number1 - subtractionProblem.Number2 == subtractionProblem.Result);
                 Assert.True(subtractionProblem.Result >= 0);
             }
@@ -43,10 +43,10 @@ namespace SimpleMathGame.Tests
         public void TestMultiplication(int numberLimit, int timeLimit)
         {
             // Checks that the result isn't higher than the number limit (mximum range of the math problems).
-            GenerateNumbers generateNumbers = new GenerateNumbers(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
             for (int i = 0; i < 100; i++)
             {
-                AssignNumbersAndResult multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
+                AssignedNumbersAndResult multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
                 Assert.True(multiplicationProblem.Number1 * multiplicationProblem.Number2 == multiplicationProblem.Result);
                 Assert.True(multiplicationProblem.Result <= generateNumbers.NumberLimit);
             }
@@ -59,10 +59,10 @@ namespace SimpleMathGame.Tests
         public void TestDivision(int numberLimit, int timeLimit)
         {
             // Checks that the result is an integer and that the dividend is divisible by the divisor.
-            GenerateNumbers generateNumbers = new GenerateNumbers(numberLimit, timeLimit);
+            NumbersGenerator generateNumbers = new NumbersGenerator(numberLimit, timeLimit);
             for (int i = 0; i < 100; i++)
             {
-                AssignNumbersAndResult divisionProblem = generateNumbers.GenerateDivisionProblem();
+                AssignedNumbersAndResult divisionProblem = generateNumbers.GenerateDivisionProblem();
                 Assert.True(divisionProblem.Number1 / divisionProblem.Number2 == divisionProblem.Result);
                 Assert.True(divisionProblem.Number1 % divisionProblem.Number2 == 0);
             }
