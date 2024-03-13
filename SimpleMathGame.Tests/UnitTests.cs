@@ -15,6 +15,7 @@ namespace SimpleMathGame.Tests
             for (int i = 0; i < 100; i++)
             {
                 AssignNumbersAndResult additionProblem = generateNumbers.GenerateAdditionProblem();
+                Assert.True(additionProblem.Number1 + additionProblem.Number2 == additionProblem.Result);
                 Assert.True(additionProblem.Result <= generateNumbers.NumberLimit);
             }
         }
@@ -30,6 +31,7 @@ namespace SimpleMathGame.Tests
             for (int i = 0; i < 100; i++)
             {
                 AssignNumbersAndResult subtractionProblem = generateNumbers.GenerateSubtractionProblem();
+                Assert.True(subtractionProblem.Number1 - subtractionProblem.Number2 == subtractionProblem.Result);
                 Assert.True(subtractionProblem.Result >= 0);
             }
         }
@@ -45,6 +47,7 @@ namespace SimpleMathGame.Tests
             for (int i = 0; i < 100; i++)
             {
                 AssignNumbersAndResult multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
+                Assert.True(multiplicationProblem.Number1 * multiplicationProblem.Number2 == multiplicationProblem.Result);
                 Assert.True(multiplicationProblem.Result <= generateNumbers.NumberLimit);
             }
         }
