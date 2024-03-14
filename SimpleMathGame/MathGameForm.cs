@@ -1,10 +1,11 @@
 using NumberGenerationAndAssignment;
+using System.Windows.Forms;
 namespace SimpleMathGame
 {
     public partial class MathGameForm : Form
     {
         NumbersGenerator generateNumbers = new NumbersGenerator();
-        // The constructor also accepts parameters - highest number/range of the math problems.
+        // The constructor also accepts a parameter - highest number/range of the math problems.
         // GenerateNumbers generateNumbers = new GenerateNumbers(10000);
         AssignedNumbersAndResult additionProblem = new AssignedNumbersAndResult();
         AssignedNumbersAndResult subtractionProblem = new AssignedNumbersAndResult();
@@ -13,6 +14,10 @@ namespace SimpleMathGame
         int timeLimit = 15; //Default time limit is 15 seconds.
         int remainingTime = 0;
         int correctAnswers = 0;
+        bool isAdditionResultCorrect = false;
+        bool isSubtractionResultCorrect = false;
+        bool isMultiplicationResultCorrect = false;
+        bool isDivisionResultCorrect = false;
         public MathGameForm()
         {
             InitializeComponent();
@@ -30,6 +35,10 @@ namespace SimpleMathGame
         {
             correctAnswers = 0;
             remainingTime = timeLimit;
+            isAdditionResultCorrect = false;
+            isSubtractionResultCorrect = false;
+            isMultiplicationResultCorrect = false;
+            isDivisionResultCorrect = false;
             additionProblem = generateNumbers.GenerateAdditionProblem();
             labelAddNo1.Text = additionProblem.Number1.ToString();
             labelAddNo2.Text = additionProblem.Number2.ToString();
@@ -64,23 +73,30 @@ namespace SimpleMathGame
             else
             {
                 timer.Stop();
-                textBoxResultAdd.ReadOnly = true;
-                textBoxResultSubtract.ReadOnly = true;
-                textBoxResultMultiply.ReadOnly = true;
-                textBoxResultDivide.ReadOnly = true;
-                checkResults(textBoxResultAdd, additionProblem.Result);
-                checkResults(textBoxResultSubtract, subtractionProblem.Result);
-                checkResults(textBoxResultMultiply, multiplicationProblem.Result);
-                checkResults(textBoxResultDivide, divisionProblem.Result);
+                isAdditionResultCorrect = checkResults(textBoxResultAdd, additionProblem.Result);
+                isSubtractionResultCorrect = checkResults(textBoxResultSubtract, subtractionProblem.Result);
+                isMultiplicationResultCorrect = checkResults(textBoxResultMultiply, multiplicationProblem.Result);
+                isDivisionResultCorrect = checkResults(textBoxResultDivide, divisionProblem.Result);
+                countCorrectAnswers();
                 showResults();
             }
         }
-        private void checkResults(TextBox textBox, int result)
+        private bool checkResults(TextBox textBox, int result)
         {
-            textBox.BackColor = SystemColors.Control;
             if (textBox.Text != string.Empty && int.Parse(textBox.Text) == result)
             {
-                correctAnswers++;
+                return true;
+            }
+            return false;
+        }
+        private void changeColoursAndDeactivate(TextBox textBox, bool isResultCorrect)
+        {
+            // The results turn green or red based on whether they are correct.
+            // The textbox is set as ReadOnly.
+            textBox.ReadOnly = true;
+            textBox.BackColor = SystemColors.Control;
+            if (isResultCorrect)
+            {
                 textBox.ForeColor = Color.Green;
             }
             else
@@ -88,8 +104,30 @@ namespace SimpleMathGame
                 textBox.ForeColor = Color.Red;
             }
         }
+        private int countCorrectAnswers()
+        {
+            correctAnswers = 0;
+            bool[] correctAnswersArray = {isAdditionResultCorrect, isSubtractionResultCorrect, isMultiplicationResultCorrect, isDivisionResultCorrect };
+            for (int i = 0; i < correctAnswersArray.Length; i++)
+            {
+                if (correctAnswersArray[i])
+                {
+                    correctAnswers++;
+                }
+            }
+            if (correctAnswers == 4) // If all the player's answers are correct, the game ends.
+            {
+                timer.Stop();
+                showResults();
+            }
+            return correctAnswers;
+        }
         private void showResults()
         {
+            changeColoursAndDeactivate(textBoxResultAdd, isAdditionResultCorrect);
+            changeColoursAndDeactivate(textBoxResultSubtract, isSubtractionResultCorrect);
+            changeColoursAndDeactivate(textBoxResultMultiply, isMultiplicationResultCorrect);
+            changeColoursAndDeactivate(textBoxResultDivide, isDivisionResultCorrect);
             string message = string.Empty;
             switch (correctAnswers)
             {
@@ -114,6 +152,32 @@ namespace SimpleMathGame
             {
                 buttonStart.PerformClick();
             }
+        }
+
+        // These four methods ensure that if the player types in all the correct answers before the time limit runs out,
+        // the game ends.
+        private void textBoxResultAdd_TextChanged(object sender, EventArgs e)
+        {
+            isAdditionResultCorrect = checkResults(textBoxResultAdd, additionProblem.Result);
+            countCorrectAnswers();
+        }
+
+        private void textBoxResultSubtract_TextChanged(object sender, EventArgs e)
+        {
+            isSubtractionResultCorrect = checkResults(textBoxResultSubtract, subtractionProblem.Result);
+            countCorrectAnswers();
+        }
+
+        private void textBoxResultMultiply_TextChanged(object sender, EventArgs e)
+        {
+            isMultiplicationResultCorrect = checkResults(textBoxResultMultiply, multiplicationProblem.Result);
+            countCorrectAnswers();
+        }
+
+        private void textBoxResultDivide_TextChanged(object sender, EventArgs e)
+        {
+            isDivisionResultCorrect = checkResults(textBoxResultDivide, divisionProblem.Result);
+            countCorrectAnswers();
         }
     }
 }
