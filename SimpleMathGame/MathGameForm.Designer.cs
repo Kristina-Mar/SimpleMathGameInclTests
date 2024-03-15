@@ -291,7 +291,7 @@
             textBoxResultAdd.Size = new Size(178, 44);
             textBoxResultAdd.TabIndex = 16;
             textBoxResultAdd.TextAlign = HorizontalAlignment.Right;
-            textBoxResultAdd.TextChanged += textBoxResultAdd_TextChanged;
+            textBoxResultAdd.TextChanged += textBoxResult_TextChanged;
             textBoxResultAdd.KeyPress += textBoxResult_KeyPress;
             // 
             // textBoxResultSubtract
@@ -304,7 +304,7 @@
             textBoxResultSubtract.Size = new Size(178, 44);
             textBoxResultSubtract.TabIndex = 17;
             textBoxResultSubtract.TextAlign = HorizontalAlignment.Right;
-            textBoxResultSubtract.TextChanged += textBoxResultSubtract_TextChanged;
+            textBoxResultSubtract.TextChanged += textBoxResult_TextChanged;
             textBoxResultSubtract.KeyPress += textBoxResult_KeyPress;
             // 
             // textBoxResultMultiply
@@ -317,7 +317,7 @@
             textBoxResultMultiply.Size = new Size(178, 44);
             textBoxResultMultiply.TabIndex = 18;
             textBoxResultMultiply.TextAlign = HorizontalAlignment.Right;
-            textBoxResultMultiply.TextChanged += textBoxResultMultiply_TextChanged;
+            textBoxResultMultiply.TextChanged += textBoxResult_TextChanged;
             textBoxResultMultiply.KeyPress += textBoxResult_KeyPress;
             // 
             // textBoxResultDivide
@@ -330,7 +330,7 @@
             textBoxResultDivide.Size = new Size(178, 44);
             textBoxResultDivide.TabIndex = 19;
             textBoxResultDivide.TextAlign = HorizontalAlignment.Right;
-            textBoxResultDivide.TextChanged += textBoxResultDivide_TextChanged;
+            textBoxResultDivide.TextChanged += textBoxResult_TextChanged;
             textBoxResultDivide.KeyPress += textBoxResult_KeyPress;
             // 
             // panelAnswers
