@@ -23,7 +23,7 @@ namespace SimpleMathGame
                 e.Handled = true;
             }
         }
-        private void buttonStart_Click(object sender, EventArgs e)
+        private void ButtonStart_Click(object sender, EventArgs e)
         {
             numberOfCorrectAnswers = 0;
             remainingTime = timeLimit;
@@ -59,7 +59,7 @@ namespace SimpleMathGame
             timer.Enabled = true;
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             if (remainingTime > 0)
             {
@@ -72,23 +72,23 @@ namespace SimpleMathGame
                 timer.Stop();
                 foreach (TextBox textBox in panelAnswers.Controls)
                 {
-                    checkResults(textBox);
+                    CheckResults(textBox);
                 }
-                countCorrectAnswers();
-                showResults();
+                CountCorrectAnswers();
+                ShowResults();
             }
         }
-        private bool checkResults(TextBox textBox)
+        private bool CheckResults(TextBox textBox)
         {
             return textBox.Text != string.Empty && textBox.Tag != null && int.Parse(textBox.Text) == (int)textBox.Tag;
         }
-        private void changeColoursAndDeactivate(TextBox textBox)
+        private void ChangeColoursAndDeactivate(TextBox textBox)
         {
             // The results turn green or red based on whether they are correct.
             // The textbox is set as ReadOnly.
             textBox.ReadOnly = true;
             textBox.BackColor = SystemColors.Control;
-            if (checkResults(textBox))
+            if (CheckResults(textBox))
             {
                 textBox.ForeColor = Color.Green;
             }
@@ -97,12 +97,12 @@ namespace SimpleMathGame
                 textBox.ForeColor = Color.Red;
             }
         }
-        private int countCorrectAnswers()
+        private int CountCorrectAnswers()
         {
             numberOfCorrectAnswers = 0;
             foreach (TextBox textBox in panelAnswers.Controls) // All user answers are checked.
             {
-                if (checkResults(textBox))
+                if (CheckResults(textBox))
                 {
                     numberOfCorrectAnswers++;
                 }
@@ -110,15 +110,15 @@ namespace SimpleMathGame
             if (numberOfCorrectAnswers == 4) // If all the player's answers are correct, the game ends.
             {
                 timer.Stop();
-                showResults();
+                ShowResults();
             }
             return numberOfCorrectAnswers;
         }
-        private void showResults()
+        private void ShowResults()
         {
             foreach (TextBox textBox in panelAnswers.Controls) // All user answers are deleted.
             {
-                changeColoursAndDeactivate(textBox);
+                ChangeColoursAndDeactivate(textBox);
             }
             string message = string.Empty;
             switch (numberOfCorrectAnswers)
@@ -148,13 +148,13 @@ namespace SimpleMathGame
 
         // When the player types in their answer, the answer gets checked against the result.
         // If the player types in all the correct answers before the time limit runs out, the game ends.
-        private void textBoxResult_TextChanged(object sender, EventArgs e)
+        private void TextBoxResult_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             // If the current answer is correct, all the answers get checked.
-            if (checkResults(textBox))
+            if (CheckResults(textBox))
             {
-                countCorrectAnswers();
+                CountCorrectAnswers();
             }
         }
     }

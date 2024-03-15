@@ -234,7 +234,7 @@
             // timer
             // 
             timer.Interval = 1000;
-            timer.Tick += timer_Tick;
+            timer.Tick += Timer_Tick;
             // 
             // buttonStart
             // 
@@ -247,7 +247,7 @@
             buttonStart.TabIndex = 20;
             buttonStart.Text = "Start game";
             buttonStart.UseVisualStyleBackColor = false;
-            buttonStart.Click += buttonStart_Click;
+            buttonStart.Click += ButtonStart_Click;
             // 
             // labelRemainingTimeText
             // 
@@ -291,7 +291,7 @@
             textBoxResultAdd.Size = new Size(178, 44);
             textBoxResultAdd.TabIndex = 16;
             textBoxResultAdd.TextAlign = HorizontalAlignment.Right;
-            textBoxResultAdd.TextChanged += textBoxResult_TextChanged;
+            textBoxResultAdd.TextChanged += TextBoxResult_TextChanged;
             textBoxResultAdd.KeyPress += textBoxResult_KeyPress;
             // 
             // textBoxResultSubtract
@@ -304,7 +304,7 @@
             textBoxResultSubtract.Size = new Size(178, 44);
             textBoxResultSubtract.TabIndex = 17;
             textBoxResultSubtract.TextAlign = HorizontalAlignment.Right;
-            textBoxResultSubtract.TextChanged += textBoxResult_TextChanged;
+            textBoxResultSubtract.TextChanged += TextBoxResult_TextChanged;
             textBoxResultSubtract.KeyPress += textBoxResult_KeyPress;
             // 
             // textBoxResultMultiply
@@ -317,7 +317,7 @@
             textBoxResultMultiply.Size = new Size(178, 44);
             textBoxResultMultiply.TabIndex = 18;
             textBoxResultMultiply.TextAlign = HorizontalAlignment.Right;
-            textBoxResultMultiply.TextChanged += textBoxResult_TextChanged;
+            textBoxResultMultiply.TextChanged += TextBoxResult_TextChanged;
             textBoxResultMultiply.KeyPress += textBoxResult_KeyPress;
             // 
             // textBoxResultDivide
@@ -330,7 +330,7 @@
             textBoxResultDivide.Size = new Size(178, 44);
             textBoxResultDivide.TabIndex = 19;
             textBoxResultDivide.TextAlign = HorizontalAlignment.Right;
-            textBoxResultDivide.TextChanged += textBoxResult_TextChanged;
+            textBoxResultDivide.TextChanged += TextBoxResult_TextChanged;
             textBoxResultDivide.KeyPress += textBoxResult_KeyPress;
             // 
             // panelAnswers
