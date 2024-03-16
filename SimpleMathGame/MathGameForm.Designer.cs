@@ -444,7 +444,7 @@
             labelTimeLimit.Anchor = AnchorStyles.None;
             labelTimeLimit.AutoSize = true;
             labelTimeLimit.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTimeLimit.Location = new Point(814, 388);
+            labelTimeLimit.Location = new Point(801, 388);
             labelTimeLimit.Name = "labelTimeLimit";
             labelTimeLimit.Size = new Size(32, 22);
             labelTimeLimit.TabIndex = 30;
@@ -455,7 +455,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(713, 388);
+            label3.Location = new Point(700, 388);
             label3.Name = "label3";
             label3.Size = new Size(95, 22);
             label3.TabIndex = 29;

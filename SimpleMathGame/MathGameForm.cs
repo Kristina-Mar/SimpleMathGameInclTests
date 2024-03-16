@@ -4,10 +4,6 @@ namespace SimpleMathGame
 {
     public partial class MathGameForm : Form
     {
-        NumbersGenerator generateNumbers = new NumbersGenerator();
-        // The constructor also accepts a parameter - highest number/range of the math problems.
-        // GenerateNumbers generateNumbers = new GenerateNumbers(10000);
-
         int timeLimit = 15; //Default time limit is 15 seconds.
         int remainingTime = 0;
         int numberOfCorrectAnswers = 0;
@@ -26,7 +22,7 @@ namespace SimpleMathGame
         }
         private void ButtonStart_Click(object sender, EventArgs e)
         {
-            generateNumbers = new NumbersGenerator(maxNumber);
+            NumbersGenerator generateNumbers = new NumbersGenerator(maxNumber);
             numberOfCorrectAnswers = 0;
             remainingTime = timeLimit;
 
@@ -99,7 +95,7 @@ namespace SimpleMathGame
                 textBox.ForeColor = Color.Red;
             }
         }
-        private int CountCorrectAnswers()
+        private void CountCorrectAnswers()
         {
             numberOfCorrectAnswers = 0;
             foreach (TextBox textBox in panelAnswers.Controls) // All user answers are checked.
@@ -114,7 +110,6 @@ namespace SimpleMathGame
                 timer.Stop();
                 ShowResults();
             }
-            return numberOfCorrectAnswers;
         }
         private void ShowResults()
         {
