@@ -11,6 +11,7 @@ namespace SimpleMathGame
         int timeLimit = 15; //Default time limit is 15 seconds.
         int remainingTime = 0;
         int numberOfCorrectAnswers = 0;
+        int maxNumber = 100; // The scope of the math problems.
         public MathGameForm()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace SimpleMathGame
         }
         private void ButtonStart_Click(object sender, EventArgs e)
         {
+            generateNumbers = new NumbersGenerator(maxNumber);
             numberOfCorrectAnswers = 0;
             remainingTime = timeLimit;
 
@@ -156,6 +158,32 @@ namespace SimpleMathGame
             {
                 CountCorrectAnswers();
             }
+        }
+
+        private void TrackBarMaxNumber_Scroll(object sender, EventArgs e)
+        {
+            TrackBar trackBar = (TrackBar)sender;
+            maxNumber = trackBar.Value;
+            // The condition makes sure the trackbar moves by the small change increments (easier to get to a rounded value).
+            // Default small change is 10.
+            if (maxNumber % trackBar.SmallChange != 0)
+            {
+                maxNumber = (maxNumber / trackBar.SmallChange) * trackBar.SmallChange;
+            }
+            labelMaxNumber.Text = maxNumber.ToString();
+        }
+
+        private void TrackBarTimeLimit_Scroll(object sender, EventArgs e)
+        {
+            TrackBar trackBar = (TrackBar)sender;
+            timeLimit = trackBar.Value;
+            // The condition makes sure the trackbar moves by the small change increments (easier to get to a rounded value).
+            // Default small change is 5 seconds.
+            if (timeLimit % trackBar.SmallChange != 0)
+            {
+                timeLimit = (timeLimit / trackBar.SmallChange) * trackBar.SmallChange;
+            }
+            labelTimeLimit.Text = timeLimit.ToString();
         }
     }
 }
