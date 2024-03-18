@@ -11,9 +11,5 @@
             Number2 = number2;
             Result = result;
         }
-        public AssignedNumbersAndResult()
-        {
-
-        }
     }
 }

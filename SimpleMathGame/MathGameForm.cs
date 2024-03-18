@@ -22,26 +22,26 @@ namespace SimpleMathGame
         }
         private void ButtonStart_Click(object sender, EventArgs e)
         {
-            NumbersGenerator generateNumbers = new NumbersGenerator(maxNumber);
+            var generateNumbers = new NumbersGenerator(maxNumber);
             numberOfCorrectAnswers = 0;
             remainingTime = timeLimit;
 
-            var additionProblem = generateNumbers.GenerateAdditionProblem();
+            AssignedNumbersAndResult additionProblem = generateNumbers.GenerateAdditionProblem();
             labelAddNo1.Text = additionProblem.Number1.ToString();
             labelAddNo2.Text = additionProblem.Number2.ToString();
             textBoxResultAdd.Tag = additionProblem.Result;
 
-            var subtractionProblem = generateNumbers.GenerateSubtractionProblem();
+            AssignedNumbersAndResult subtractionProblem = generateNumbers.GenerateSubtractionProblem();
             labelSubtNo1.Text = subtractionProblem.Number1.ToString();
             labelSubtNo2.Text = subtractionProblem.Number2.ToString();
             textBoxResultSubtract.Tag = subtractionProblem.Result;
 
-            var multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
+            AssignedNumbersAndResult multiplicationProblem = generateNumbers.GenerateMultiplicationProblem();
             labelMultNo1.Text = multiplicationProblem.Number1.ToString();
             labelMultNo2.Text = multiplicationProblem.Number2.ToString();
             textBoxResultMultiply.Tag = multiplicationProblem.Result;
 
-            var divisionProblem = generateNumbers.GenerateDivisionProblem();
+            AssignedNumbersAndResult divisionProblem = generateNumbers.GenerateDivisionProblem();
             labelDivNo1.Text = divisionProblem.Number1.ToString();
             labelDivNo2.Text = divisionProblem.Number2.ToString();
             textBoxResultDivide.Tag = divisionProblem.Result;
